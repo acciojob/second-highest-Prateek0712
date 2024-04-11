@@ -10,7 +10,38 @@
 	<script>
 		function secondHighest(arr) {
 			//Write your code here
-			
+			if(arr.length<=1)
+			{
+				return Number.MIN_SAFE_INTEGER;
+			}
+			let flag =false;
+			for(let i=1;i<arr.length;i++)
+				{
+					if((arr[i-1]===arr[i])==false)
+					{
+						flag=true;
+						break;
+					}
+				}
+			if(flag==true)
+			{
+				return Number.MIN_SAFE_INTEGER;
+			}
+			let first=Number.MIN_SAFE_INTEGER;
+			let second=Number.MIN_SAFE_INTEGER;
+			for(let i=0;i<arr.length;i++)
+				{
+					if(arr[i]>=first)
+					{
+						second=first;
+						first=arr[i];
+					}
+					else if(arr[i]<first && arr[i]>second)
+					{
+						second=arr[i];
+					}
+				}
+			return second;
 		}
 
 		function Main() {
@@ -21,7 +52,7 @@
 			}
 			alert(secondHighest(arr));
 		}
-		Main();
+		//Main();
 	</script>
 
     <script type="text/javascript" src="./script.js">
